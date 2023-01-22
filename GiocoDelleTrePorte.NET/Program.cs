@@ -18,8 +18,6 @@ namespace GiocoDelleTrePorte.NET
             float calcoloPercerntualeLoseChange = 0;
             float calcoloPercerntualeWinLeave = 0;
             float calcoloPercerntualeLoseLeave = 0;
-            float sommaTotaleLeave = 0;
-            float sommaTotaleChange = 0;
             Door Porta = new Door();
             string FinaleAnswerForLeaveTheGame = "y";//for the final answer in the bottom of the code
             do
@@ -49,13 +47,11 @@ namespace GiocoDelleTrePorte.NET
                     {
                         Console.WriteLine("HAI VINTO LA MACCHINA COMPLIMENTI!!\n");//win message
                         countC++;
-                        
                     }
                     else
                     {
                         Console.WriteLine("Peccato hai perso :( ; però hai vinto una capra :) .\n");//lost message
                         loseC++;
-                        
                     }
                 }
                 if (answer == "l")//No door changed answer
@@ -64,13 +60,11 @@ namespace GiocoDelleTrePorte.NET
                     {
                         Console.WriteLine("HAI VINTO LA MACCHINA COMPLIMENTI!!\n");//win message
                         countL++;
-                        
                     }
                     else
                     {
                         Console.WriteLine("Peccato hai perso :( ; però hai vinto una capra :) .\n");//lost message
                         loseL++;
-                        
                     }
                 }
                 calcoloPercerntualeWinChange = countC / (countC + loseC) * 100;//for win change
