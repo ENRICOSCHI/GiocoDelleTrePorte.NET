@@ -18,7 +18,8 @@ namespace GiocoDelleTrePorte.NET
             float calcoloPercerntualeLoseChange = 0;
             float calcoloPercerntualeWinLeave = 0;
             float calcoloPercerntualeLoseLeave = 0;
-            float sommaTotaleLeave = 100;
+            float sommaTotaleLeave = 0;
+            float sommaTotaleChange = 0;
             Door Porta = new Door();
             string FinaleAnswerForLeaveTheGame = "y";//for the final answer in the bottom of the code
             do
@@ -72,29 +73,12 @@ namespace GiocoDelleTrePorte.NET
                         
                     }
                 }
-                calcoloPercerntualeWinChange += countC / (countC + loseC) * 100;//for win change
-                calcoloPercerntualeLoseChange += loseC / (countC + loseC) * 100;//for lose change
-                calcoloPercerntualeWinLeave += countL / (countL + loseL) * 100;//for win leave
-                calcoloPercerntualeLoseLeave += loseL / (countL + loseL) * 100;//for lose leave
-                //for not pass the 100%
-                if (calcoloPercerntualeLoseChange >= 100)
-                {
-                    calcoloPercerntualeLoseChange = 100;
-                }
-                if(calcoloPercerntualeLoseLeave >= 100)
-                {
-                    calcoloPercerntualeLoseLeave = 100;
-                }
-                if(calcoloPercerntualeWinChange >= 100)
-                {
-                    calcoloPercerntualeWinChange = 100;
-                }
-                if(calcoloPercerntualeWinLeave >= 100)
-                {
-                    calcoloPercerntualeWinLeave = 100;
-                }
+                calcoloPercerntualeWinChange = countC / (countC + loseC) * 100;//for win change
+                calcoloPercerntualeLoseChange = loseC / (countC + loseC) * 100;//for lose change
+                calcoloPercerntualeWinLeave = countL / (countL + loseL) * 100;//for win leave
+                calcoloPercerntualeLoseLeave = loseL / (countL + loseL) * 100;//for lose leave
                 //try to save formula online in database
-                Console.WriteLine("La percentuale di partite vinte cambiando porta sono: " + calcoloPercerntualeWinChange.ToString() + "% invecele partite perse per aver cambiato porta sono: " + calcoloPercerntualeLoseChange.ToString() +"%.\nLe partite vinte per non aver cambiato la porta sono: " + calcoloPercerntualeWinLeave.ToString() + "% mentre le partite perse per non aver cambiato porta sono: " + calcoloPercerntualeLoseLeave.ToString() + "%.\n"); // message that show statics
+                Console.WriteLine("La percentuale di partite vinte cambiando porta sono: " + calcoloPercerntualeWinChange + "% invecele partite perse per aver cambiato porta sono: " + calcoloPercerntualeLoseChange +"%.\nLe partite vinte per non aver cambiato la porta sono: " + calcoloPercerntualeWinLeave+ "% mentre le partite perse per non aver cambiato porta sono: " + calcoloPercerntualeLoseLeave + "%.\n"); // message that show statics
                 Console.WriteLine("Per avere statistiche più precise provare più volte il seguente gioco.\n");                                                                                                                  
                 Console.WriteLine("Riprovare il gioco? \ty \toppure \tn\n");//end message
                 FinaleAnswerForLeaveTheGame = Console.ReadLine();
