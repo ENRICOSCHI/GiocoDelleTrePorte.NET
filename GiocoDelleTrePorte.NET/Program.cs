@@ -10,6 +10,14 @@ namespace GiocoDelleTrePorte.NET
     {
         static void Main(string[] args)
         {
+            int countC = 0;//for the win change choice count
+            int loseC= 0;//for the lose chagne choice count
+            int countL= 0;//for leave the old choice count
+            int loseL= 0;//for the lose leave choice count
+            double  calcoloPercerntualeWinChange = 0;//go to row 70-75 for see what are this variable
+            double calcoloPercerntualeLoseChange = 0;
+            double calcoloPercerntualeWinLeave = 0;
+            double calcoloPercerntualeLoseLeave = 0;
             Door Porta = new Door();
             string FinaleAnswerForLeaveTheGame = "y";//for the final answer in the bottom of the code
             do
@@ -38,25 +46,35 @@ namespace GiocoDelleTrePorte.NET
                     if (TheWinnerDoor == ChangedDoor)
                     {
                         Console.WriteLine("HAI VINTO LA MACCHINA COMPLIMENTI!!\n");//win message
+                        countC++;
+                        calcoloPercerntualeWinChange += (countC / (countL + countC + loseL + loseC)) * 10;//for win change
                     }
                     else
                     {
                         Console.WriteLine("Peccato hai perso :( ; però hai vinto una capra :) .\n");//lost message
+                        loseC++;
+                        calcoloPercerntualeLoseChange += (loseC / (countL + countC + loseL + loseC)) * 10;//for lose change
                     }
-                    //add formula of percentage when you put it online in database
+                    //try to save formula online in database
                 }
                 if (answer == "l")//No door changed answer
                 {
                     if (TheWinnerDoor == FirstChosenDoor)
                     {
                         Console.WriteLine("HAI VINTO LA MACCHINA COMPLIMENTI!!\n");//win message
+                        countL++;
+                        calcoloPercerntualeWinLeave += (countL / (countL + countC + loseL + loseC)) * 10;//for win leave
                     }
                     else
                     {
                         Console.WriteLine("Peccato hai perso :( ; però hai vinto una capra :) .\n");//lost message
+                        loseL++;
+                        calcoloPercerntualeLoseLeave += (loseL / (countL + countC + loseL + loseC)) * 10;//for lose leave
                     }
-                    //add formula of percentage when you put it online in database
+                    //try to save formula online in database
                 }
+                Console.WriteLine("La percentuale di partite vinte cambiando porta sono: " + calcoloPercerntualeWinChange.ToString() + "% invecele partite perse per aver cambiato porta sono: " + calcoloPercerntualeLoseChange.ToString() +"%.\nLe partite vinte per non aver cambiato la porta sono: " + calcoloPercerntualeWinLeave.ToString() + "% mentre le partite perse per non aver cambiato porta sono: " + calcoloPercerntualeLoseLeave.ToString() + "%.\n"); // message that show statics
+                Console.WriteLine("Per avere statistiche più precise provare più volte il seguente gioco.\n");                                                                                                                  
                 Console.WriteLine("Riprovare il gioco? \ty \toppure \tn\n");//end message
                 FinaleAnswerForLeaveTheGame = Console.ReadLine();
             } while (FinaleAnswerForLeaveTheGame != "n"); 
